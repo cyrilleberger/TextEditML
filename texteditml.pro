@@ -17,7 +17,6 @@ HEADERS += \
 
 OTHER_FILES = qmldir \
     TextEditorArea.qml \
-    TextEditorView.qml \
     examples/TextEditML.qml
 
 !equals(_PRO_FILE_PWD_, $$OUT_PWD) {
