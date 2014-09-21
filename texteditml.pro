@@ -9,11 +9,13 @@ uri = org.slidesml.textedit
 # Input
 SOURCES += \
     DocumentHandler.cpp \
-    TextEditMLPlugin.cpp
+    TextEditMLPlugin.cpp \
+    FileIO.cpp
 
 HEADERS += \
     DocumentHandler.h \
-    TextEditMLPlugin.h
+    TextEditMLPlugin.h \
+    FileIO.h
 
 OTHER_FILES = qmldir \
     TextEditorArea.qml \
