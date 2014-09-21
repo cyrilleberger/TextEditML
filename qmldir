@@ -2,4 +2,4 @@ module org.slidesml.textedit
 plugin TextEditML
 
 TextEditorArea 1.0 TextEditorArea.qml
-TextEditorView 1.0 TextEditorView.qml
+TextEditorOptions 1.0 TextEditorOptions.qml

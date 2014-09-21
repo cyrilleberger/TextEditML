@@ -21,7 +21,8 @@ HEADERS += \
 
 OTHER_FILES = qmldir \
     TextEditorArea.qml \
-    examples/TextEditML.qml
+    examples/TextEditML.qml \
+    TextEditorOptions.qml
 
 !equals(_PRO_FILE_PWD_, $$OUT_PWD) {
     copy_qmldir.target = $$OUT_PWD/qmldir
@@ -31,7 +32,7 @@ OTHER_FILES = qmldir \
     PRE_TARGETDEPS += $$copy_qmldir.target
 }
 
-qmldir.files = qmldir TextEditorArea.qml TextEditorView.qml
+qmldir.files = qmldir TextEditorArea.qml TextEditorOptions.qml
 unix {
     installPath = $$[QT_INSTALL_QML]/$$replace(uri, \\., /)
     qmldir.path = $$installPath
