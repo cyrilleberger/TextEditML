@@ -17,6 +17,7 @@ public:
   QString fileTemplate() const { return m_fileTemplate; }
   void setFileTemplate(const QString& _template);
   QString fileName() const { return m_temporaryFile->fileName(); }
+  Q_INVOKABLE void writeContent(const QString& _content);
 signals:
   void fileTemplateChanged();
   void fileNameChanged();
