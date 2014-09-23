@@ -6,6 +6,7 @@ Item
   property color textColor: "white"
   property font  font: fontProvider.font
 
+  property int indentSize: 2
   Text
   {
     id: fontProvider
