@@ -32,36 +32,36 @@ TextArea {
 
   Keys.onTabPressed:
   {
-    textArea.insert(cursorPosition, __indent)
+    root.insert(cursorPosition, __indent)
   }
   Keys.onPressed:
   {
     if (event.key === Qt.Key_BraceRight)
     {
-      textArea.select(0, cursorPosition)
-      var previousContent = textArea.selectedText.split(/\r\n|\r|\n/)
-      textArea.deselect()
+      root.select(0, cursorPosition)
+      var previousContent = root.selectedText.split(/\r\n|\r|\n/)
+      root.deselect()
       var currentLine = previousContent[previousContent.length - 1]
       var leftBrace = /{/, rightBrace = /}/;
       if (!leftBrace.test(currentLine))
       {
-        textArea.remove(cursorPosition, cursorPosition - currentLine.length);
+        root.remove(cursorPosition, cursorPosition - currentLine.length);
         currentLine = currentLine.toString().replace(new RegExp(" {1,"+ options.indentSize +"}"), "");
-        textArea.insert(cursorPosition, currentLine);
+        root.insert(cursorPosition, currentLine);
       }
     }
   }
   Keys.onReturnPressed:
   {
-    textArea.select(0, cursorPosition)
-    var previousContent = textArea.selectedText.split(/\r\n|\r|\n/)
-    textArea.deselect()
+    root.select(0, cursorPosition)
+    var previousContent = root.selectedText.split(/\r\n|\r|\n/)
+    root.deselect()
     var currentLine = previousContent[previousContent.length - 1]
     var leftBrace = /{/, rightBrace = /}/;
-    textArea.insert(cursorPosition, "\n")
+    root.insert(cursorPosition, "\n")
     var whitespaceAppend = currentLine.match(new RegExp(/^[ \t]*/))  // whitespace
     if (leftBrace.test(currentLine)) // indent
       whitespaceAppend += __indent;
-    textArea.insert(cursorPosition, whitespaceAppend)
+    root.insert(cursorPosition, whitespaceAppend)
   }
 }
