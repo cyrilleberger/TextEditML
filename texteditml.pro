@@ -4,7 +4,7 @@ QT += qml quick
 CONFIG += qt plugin
 
 TARGET = $$qtLibraryTarget($$TARGET)
-uri = org.slidesml.textedit
+uri = org.storyml.textedit
 
 # Input
 SOURCES += \

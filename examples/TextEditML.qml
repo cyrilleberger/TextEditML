@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
-import org.slidesml.textedit 1.0
+import org.storyml.textedit 1.0
 
 ApplicationWindow
 {

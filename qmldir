@@ -1,4 +1,4 @@
-module org.slidesml.textedit
+module org.storyml.textedit
 plugin TextEditML
 
 TextEditorArea 1.0 TextEditorArea.qml

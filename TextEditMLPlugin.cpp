@@ -8,7 +8,7 @@
 
 void TextEditMLPlugin::registerTypes(const char *uri)
 {
-  // @uri org.slidesml.textedit
+  // @uri org.storyml.textedit
   qmlRegisterType<DocumentHandler>(uri, 1, 0, "DocumentHandler");
   qmlRegisterType<FileIO>(uri, 1, 0, "FileIO");
   qmlRegisterType<TemporaryFile>(uri, 1, 0, "TemporaryFile");
