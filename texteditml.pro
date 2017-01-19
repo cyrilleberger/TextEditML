@@ -1,7 +1,7 @@
 TEMPLATE = lib
 TARGET = TextEditML
-QT += qml quick
-CONFIG += qt plugin
+QT += qml quick KSyntaxHighlighting
+CONFIG += qt plugin C++11
 
 TARGET = $$qtLibraryTarget($$TARGET)
 uri = org.storyml.textedit

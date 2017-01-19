@@ -7,16 +7,16 @@ TextArea {
   id: root
 
   property TextEditorOptions options: TextEditorOptions {}
+  property DocumentHandler document: DocumentHandler
+  {
+    textDocument: root.textDocument
+  }
 
   font: options.font
   textColor: options.textColor
   style: TextAreaStyle
   {
     backgroundColor: options.backgroundColor
-  }
-  DocumentHandler
-  {
-    textDocument: root.textDocument
   }
   property string __indent: makeIndent(options.indentSize)
 
