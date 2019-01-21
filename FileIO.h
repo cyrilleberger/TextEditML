@@ -19,7 +19,7 @@ public:
   Q_INVOKABLE void addImportPath(const QUrl& _url);
   Q_INVOKABLE void setCurrentPath(const QUrl& _url);
   QString content() const { return m_content; }
-  void setContent(const QString& _content) { m_content = _content; emit(contentChanged()); }
+  void setContent(const QString& _content) { if(m_content != _content) { m_content = _content; emit(contentChanged()); } }
   QUrl url() const { return m_url; }
   void setUrl(const QUrl& _url) { m_url = _url; emit(urlChanged()); }
 signals:
