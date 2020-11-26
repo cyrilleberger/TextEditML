@@ -23,6 +23,7 @@ public:
   void setQuickTextDocument(QQuickTextDocument* _document);
   QString highlightingDefinition() const;
   void setHighlightingDefinition(const QString& _hd);
+  Q_INVOKABLE int positionForLine(int _line) const;
 signals:
   void textDocumentChanged();
   void highlightingDefinitionChanged();

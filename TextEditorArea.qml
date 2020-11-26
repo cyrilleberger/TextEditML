@@ -29,6 +29,10 @@ TextArea {
     }
     return r;
   }
+  function moveToLine(_line)
+  {
+    root.cursorPosition = document.positionForLine(_line)
+  }
 
   Keys.onTabPressed:
   {

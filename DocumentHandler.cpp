@@ -1,6 +1,8 @@
 #include "DocumentHandler.h"
 
+#include <QTextBlock>
 #include <QQuickTextDocument>
+
 #include <Definition>
 #include <Theme>
 
@@ -55,5 +57,10 @@ void DocumentHandler::setHighlightingDefinition(const QString& _hd)
   {
     m_syntaxHighlighter->setDefinition(m_repository.definitionForName(m_highlightingDefinition));
   }
+}
+
+int DocumentHandler::positionForLine(int _line) const
+{
+  return m_textDocument->textDocument()->findBlockByLineNumber(_line).position();
 }
 
