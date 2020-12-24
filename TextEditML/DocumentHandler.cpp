@@ -7,13 +7,9 @@
 #include <Theme>
 
 DocumentHandler::DocumentHandler(QObject *parent):
-  QObject(parent)
+  QObject(parent),
+  m_highlightingTheme(HighlightingTheme::LightTheme)
 {
-  // By default, QQuickItem does not draw anything. If you subclass
-  // QQuickItem to create a visual item, you will need to uncomment the
-  // following line and re-implement updatePaintNode()
-
-  // setFlag(ItemHasContents, true);
 }
 
 DocumentHandler::~DocumentHandler()
@@ -29,7 +25,6 @@ void DocumentHandler::setQuickTextDocument(QQuickTextDocument* _document)
   {
     m_doc = m_textDocument->textDocument();
     m_syntaxHighlighter = new KSyntaxHighlighting::SyntaxHighlighter(m_doc);
-    m_syntaxHighlighter->setTheme(m_repository.defaultTheme(KSyntaxHighlighting::Repository::DarkTheme));
     updateHighlighting();
   }
   emit(textDocumentChanged());
@@ -50,8 +45,32 @@ void DocumentHandler::setHighlightingDefinition(const QString& _hd)
   }
 }
 
+DocumentHandler::HighlightingTheme DocumentHandler::highlightingTheme() const
+{
+  return m_highlightingTheme;
+}
+
+void DocumentHandler::setHighlightingTheme(DocumentHandler::HighlightingTheme _theme)
+{
+  m_highlightingTheme = _theme;
+  emit(highlightingThemeChanged());
+  if(m_syntaxHighlighter)
+  {
+    updateHighlighting();
+  }
+}
+
 void DocumentHandler::updateHighlighting()
 {
+  switch(m_highlightingTheme)
+  {
+    case HighlightingTheme::LightTheme:
+      m_syntaxHighlighter->setTheme(m_repository.defaultTheme(KSyntaxHighlighting::Repository::LightTheme));
+      break;
+    case HighlightingTheme::DarkTheme:
+      m_syntaxHighlighter->setTheme(m_repository.defaultTheme(KSyntaxHighlighting::Repository::DarkTheme));
+      break;
+  }
   if(not m_highlightingDefinition.isEmpty())
   {
     KSyntaxHighlighting::Definition def = m_repository.definitionForName(m_highlightingDefinition);
