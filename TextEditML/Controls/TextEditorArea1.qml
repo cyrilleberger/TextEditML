@@ -11,61 +11,26 @@ TextArea {
   {
     textDocument: root.textDocument
   }
-
-  font: options.font
+  
+  TextEditorInternal
+  {
+    
+    id: internal
+  }
+  
   textColor: options.textColor
+
   style: TextAreaStyle
   {
     backgroundColor: options.backgroundColor
   }
-  property string __indent: makeIndent(options.indentSize)
 
-  function makeIndent(s)
-  {
-    var r = ""
-    for(var i = 0; i < s; ++i)
-    {
-      r += ' '
-    }
-    return r;
-  }
   function moveToLine(_line)
   {
     root.cursorPosition = document.positionForLine(_line)
   }
 
-  Keys.onTabPressed:
-  {
-    root.insert(cursorPosition, __indent)
-  }
-  Keys.onPressed:
-  {
-    if (event.key === Qt.Key_BraceRight)
-    {
-      root.select(0, cursorPosition)
-      var previousContent = root.selectedText.split(/\r\n|\r|\n/)
-      root.deselect()
-      var currentLine = previousContent[previousContent.length - 1]
-      var leftBrace = /{/, rightBrace = /}/;
-      if (!leftBrace.test(currentLine))
-      {
-        root.remove(cursorPosition, cursorPosition - currentLine.length);
-        currentLine = currentLine.toString().replace(new RegExp(" {1,"+ options.indentSize +"}"), "");
-        root.insert(cursorPosition, currentLine);
-      }
-    }
-  }
-  Keys.onReturnPressed:
-  {
-    root.select(0, cursorPosition)
-    var previousContent = root.selectedText.split(/\r\n|\r|\n/)
-    root.deselect()
-    var currentLine = previousContent[previousContent.length - 1]
-    var leftBrace = /{/, rightBrace = /}/;
-    root.insert(cursorPosition, "\n")
-    var whitespaceAppend = currentLine.match(new RegExp(/^[ \t]*/))  // whitespace
-    if (leftBrace.test(currentLine)) // indent
-      whitespaceAppend += __indent;
-    root.insert(cursorPosition, whitespaceAppend)
-  }
+  Keys.onTabPressed: internal.handleOnTabPressed(event)
+  Keys.onPressed: internal.handleOnKeysPressed(event)
+  Keys.onReturnPressed: internal.handleOnReturnPressed(event)
 }

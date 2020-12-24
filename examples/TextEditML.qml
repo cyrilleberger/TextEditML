@@ -1,6 +1,6 @@
 import QtQuick 2.0
 import QtQuick.Controls 1.0
-import org.storyml.textedit 1.0
+import TextEditML.Controls 1.0
 
 ApplicationWindow
 {
@@ -32,6 +32,7 @@ ApplicationWindow
     height: parent.height
     anchors.left: preview.right
     anchors.right: parent.right
+    document.highlightingDefinition: "QML"
     text: "import QtQuick 2.0;
 Rectangle
 {

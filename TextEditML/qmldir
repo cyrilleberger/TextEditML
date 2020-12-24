@@ -1,5 +1,6 @@
 module TextEditML
 plugin TextEditML
 
-TextEditorArea 1.0 TextEditorArea.qml
+TextEditor 1.0 TextEditor.qml
 TextEditorOptions 1.0 TextEditorOptions.qml
+TextEditorInternal 1.0 TextEditorInternal.qml
