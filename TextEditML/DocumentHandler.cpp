@@ -29,17 +29,8 @@ void DocumentHandler::setQuickTextDocument(QQuickTextDocument* _document)
   {
     m_doc = m_textDocument->textDocument();
     m_syntaxHighlighter = new KSyntaxHighlighting::SyntaxHighlighter(m_doc);
-    m_syntaxHighlighter->setTheme(m_repository.defaultTheme(KSyntaxHighlighting::Repository::LightTheme));
-    if(not m_highlightingDefinition.isEmpty())
-    {
-      KSyntaxHighlighting::Definition def = m_repository.definitionForName(m_highlightingDefinition);
-      if(def.isValid())
-      {
-        m_syntaxHighlighter->setDefinition(def);
-      } else {
-        qWarning() << "No syntax definition for " << m_highlightingDefinition;
-      }
-    }
+    m_syntaxHighlighter->setTheme(m_repository.defaultTheme(KSyntaxHighlighting::Repository::DarkTheme));
+    updateHighlighting();
   }
   emit(textDocumentChanged());
 }
@@ -55,7 +46,25 @@ void DocumentHandler::setHighlightingDefinition(const QString& _hd)
   emit(highlightingDefinition());
   if(m_syntaxHighlighter)
   {
-    m_syntaxHighlighter->setDefinition(m_repository.definitionForName(m_highlightingDefinition));
+    updateHighlighting();
+  }
+}
+
+void DocumentHandler::updateHighlighting()
+{
+  if(not m_highlightingDefinition.isEmpty())
+  {
+    KSyntaxHighlighting::Definition def = m_repository.definitionForName(m_highlightingDefinition);
+    if(not def.isValid())
+    {
+      def = m_repository.definitionForMimeType(m_highlightingDefinition);
+    }
+    if(def.isValid())
+    {
+      m_syntaxHighlighter->setDefinition(def);
+    } else {
+      qWarning() << "No syntax definition for " << m_highlightingDefinition;
+    }
   }
 }
 

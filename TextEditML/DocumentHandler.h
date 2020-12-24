@@ -28,6 +28,7 @@ signals:
   void textDocumentChanged();
   void highlightingDefinitionChanged();
 private:
+  void updateHighlighting();
    QQuickTextDocument* m_textDocument = nullptr;
    QTextDocument *m_doc = nullptr;
    KSyntaxHighlighting::Repository m_repository;
