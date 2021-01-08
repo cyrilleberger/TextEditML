@@ -1,16 +1,13 @@
 import QtQuick 2.1
 import QtQuick.Controls 1.0
 import QtQuick.Controls.Styles 1.1
-import TextEditML 1.0
+import TextEditML 2.0
 
 TextArea {
   id: root
 
   property TextEditorOptions options: TextEditorOptions {}
-  property DocumentHandler document: DocumentHandler
-  {
-    textDocument: root.textDocument
-  }
+  property alias document: internal.document
   
   TextEditorInternal
   {

@@ -9,9 +9,9 @@
 void TextEditMLPlugin::registerTypes(const char *uri)
 {
   // @uri TextEditML
-  qmlRegisterType<DocumentHandler>(uri, 1, 0, "DocumentHandler");
-  qmlRegisterType<FileIO>(uri, 1, 0, "FileIO");
-  qmlRegisterType<TemporaryFile>(uri, 1, 0, "TemporaryFile");
+  qmlRegisterType<DocumentHandler>(uri, 2, 0, "DocumentHandler");
+  qmlRegisterType<FileIO>(uri, 2, 0, "FileIO");
+  qmlRegisterType<TemporaryFile>(uri, 2, 0, "TemporaryFile");
 }
 
 

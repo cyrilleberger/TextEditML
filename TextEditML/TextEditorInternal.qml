@@ -1,5 +1,5 @@
 import QtQuick 2.0
-import TextEditML 1.0
+import TextEditML 2.0
 
 QtObject
 {
