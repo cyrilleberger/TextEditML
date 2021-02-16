@@ -57,7 +57,7 @@ QtObject
     root.insert(cursorPosition, "\n")
     var whitespaceAppend = currentLine.match(new RegExp(/^[ \t]*/))  // whitespace
     if (leftBrace.test(currentLine)) // indent
-      whitespaceAppend += __indent;
+      whitespaceAppend += indent;
     root.insert(cursorPosition, whitespaceAppend)
   }
 }
