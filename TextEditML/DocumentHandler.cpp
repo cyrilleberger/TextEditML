@@ -3,8 +3,8 @@
 #include <QTextBlock>
 #include <QQuickTextDocument>
 
-#include <Definition>
-#include <Theme>
+#include <KSyntaxHighlighting/Definition>
+#include <KSyntaxHighlighting/Theme>
 
 DocumentHandler::DocumentHandler(QObject *parent):
   QObject(parent),

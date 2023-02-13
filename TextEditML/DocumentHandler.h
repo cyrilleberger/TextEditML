@@ -2,8 +2,8 @@
 #define DOCUMENTHANDLER_H
 
 #include <QObject>
-#include <Repository>
-#include <SyntaxHighlighter>
+#include <KSyntaxHighlighting/Repository>
+#include <KSyntaxHighlighting/SyntaxHighlighter>
 
 class QQuickTextDocument;
 class QTextDocument;
